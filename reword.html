@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  html,body{
+    height: 100%;
+  }
+  img{
+    position: absolute;
+  }
+  div{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+</style>
+<body>
+  <div>
+    <img src="./image/4.png" alt="">
+    <img src="./image/5.png" alt="">
+    <img src="./image/6.png" alt="">
+  </div>
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script>
+    let r=0
+    let s=5
+    let r1
+    let n=0
+    let t
+    function zhuan(){
+      console.log(r)
+      r1=r
+      n++
+      if(n<Math.floor(Math.random()*20)+10){
+        s=s*1.08
+      }else{
+        s=s*0.98
+      }
+      r+=s
+      if(r-r1<0.08){
+        clearInterval(t)
+      }
+      $("img").eq(1).css("transform",`rotate(${r}deg)`)
+
+    }
+    $(document).ready(function(){
+      $("img").eq(2).click(function(){
+        clearInterval(t)
+        s=5;
+        n=0
+        t=setInterval(zhuan,60)
+      })
+    })
+  </script>
+</body>
+</html>
